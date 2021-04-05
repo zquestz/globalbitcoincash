@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: globalbitcoincash
+  namespace: default
+spec:
+  ports:
+    - port: 107
+      targetPort: 80
+  selector:
+    service: globalbitcoincash
+  type: NodePort

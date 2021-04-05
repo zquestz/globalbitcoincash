@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  labels:
+    service: globalbitcoincash
+  name: globalbitcoincash
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: globalbitcoincash
+  template:
+    metadata:
+      labels:
+        service: globalbitcoincash
+    spec:
+      containers:
+      - image: zquestz/globalbitcoincash:latest
+        imagePullPolicy: Always
+        name: globalbitcoincash
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "16Mi"
+      restartPolicy: Always

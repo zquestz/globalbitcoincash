@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+.container {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .box {
+    padding: 3em;
+}
+
+.container .box img {
+    width: 100%;
+    max-width: 500px;
+}
