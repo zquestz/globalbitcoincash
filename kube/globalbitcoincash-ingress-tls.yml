@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: globalbitcoincash-ingress
@@ -12,21 +12,29 @@ spec:
     - www.globalbitcoin.cash
     - globalbitcoin.cash
     secretName: globalbitcoincash-tls
-  backend:
-    serviceName: globalbitcoincash
-    servicePort: 107
+  defaultBackend:
+    service:
+      name: globalbitcoincash
+      port:
+        number: 107
   rules:
   - host: globalbitcoin.cash
     http:
       paths:
       - path: /
+        pathType: ImplementationSpecific
         backend:
-          serviceName: globalbitcoincash
-          servicePort: 107
+          service:
+            name: globalbitcoincash
+            port:
+              number: 107
   - host: www.globalbitcoin.cash
     http:
       paths:
       - path: /
+        pathType: ImplementationSpecific
         backend:
-          serviceName: globalbitcoincash
-          servicePort: 107
+          service:
+            name: globalbitcoincash
+            port:
+              number: 107
